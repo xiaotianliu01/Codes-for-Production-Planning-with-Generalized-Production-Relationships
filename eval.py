@@ -78,7 +78,7 @@ def eval(all_args, eval_envs, device):
         os.makedirs(str(run_dir))
     f_pth = str(run_dir) + '/' + str(all_args.model_dir.split('/')[-3]) + ".csv"
     means = np.array([np.mean(np.sum(tracker.rewards_log, axis=1)), np.mean(np.sum(tracker.holding_cost_log, axis=1)), np.mean(np.sum(tracker.backlog_cost_log, axis=1)), np.mean(np.sum(tracker.set_up_cost_log, axis=1))])
-    stds = np.array([np.std(np.mean(tracker.rewards_log, axis=1)), np.std(np.mean(tracker.holding_cost_log, axis=1)), np.std(np.sum(tracker.backlog_cost_log, axis=1)), np.std(np.sum(tracker.set_up_cost_log, axis=1))])
+    stds = np.array([np.std(np.sum(tracker.rewards_log, axis=1)), np.std(np.sum(tracker.holding_cost_log, axis=1)), np.std(np.sum(tracker.backlog_cost_log, axis=1)), np.std(np.sum(tracker.set_up_cost_log, axis=1))])
     d = np.stack([means, stds], axis=1)
     d = pd.DataFrame(d, columns = ['mean', 'std'], index = ['cost', 'holding cost', 'backlog cost', 'set up cost'])
     d.to_csv(f_pth)
