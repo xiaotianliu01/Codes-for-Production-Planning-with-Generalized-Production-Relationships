@@ -440,6 +440,7 @@ def solve_static_model(net, demand_trace, current_inv, initial_wip, linear_cf, e
     return Qs
 
 def OPT(seed, data_pth, instance_id, episode_max_step, eval_episodes, exp_name = 'Clearing_Function_Frac'):
+    # This procedure calcuates the ex-post optimal (trajectory-optimal) costs with linearizing clearing functions
     
     env = Env(seed, data_pth, instance_id, 0, episode_max_step, thread_num = eval_episodes, exp_name = exp_name)
     net = env.prod_net
